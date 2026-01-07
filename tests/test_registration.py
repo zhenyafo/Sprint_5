@@ -39,3 +39,5 @@ class TestRegistration:
         )
         
         assert registration_page.is_password_error_displayed()
+
+        
