@@ -42,3 +42,4 @@ def random_user_data(data_generator):
         "email": data_generator.generate_email(),
         "password": data_generator.generate_password()
     }
+

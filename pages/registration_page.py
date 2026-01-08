@@ -26,3 +26,5 @@ class RegistrationPage(BasePage):
     
     def is_password_error_displayed(self):
         return self.is_element_present(RegistrationPageLocators.PASSWORD_ERROR)
+    
+    

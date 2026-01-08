@@ -9,3 +9,5 @@ class MainPageLocators:
     BUNS_SECTION = (By.XPATH, "//span[text()='Булки']/parent::div")
     SAUCES_SECTION = (By.XPATH, "//span[text()='Соусы']/parent::div")
     TOPPINGS_SECTION = (By.XPATH, "//span[text()='Начинки']/parent::div")
+
+    

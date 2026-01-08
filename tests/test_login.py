@@ -56,3 +56,5 @@ class TestLogin:
         login_page.login(test_user_data["email"], test_user_data["password"])
         
         assert "account" in driver.current_url
+
+        

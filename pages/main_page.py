@@ -26,3 +26,5 @@ class MainPage(BasePage):
     
     def is_personal_account_button_visible(self):
         return self.is_element_present(MainPageLocators.PERSONAL_ACCOUNT_BUTTON)
+    
+    

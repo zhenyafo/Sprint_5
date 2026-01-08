@@ -11,3 +11,5 @@ class TestUsers:
         "password": "Admin123",
         "name": "Администратор"
     }
+
+    

@@ -32,3 +32,5 @@ class DataGenerator:
     @staticmethod
     def generate_invalid_password():
         return ''.join(random.choices(string.ascii_letters, k=5))
+    
+    

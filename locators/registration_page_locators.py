@@ -8,3 +8,5 @@ class RegistrationPageLocators:
     REGISTER_BUTTON = (By.XPATH, "//button[text()='Зарегистрироваться']")
     LOGIN_LINK = (By.XPATH, "//a[text()='Войти']")
     PASSWORD_ERROR = (By.XPATH, "//p[contains(@class, 'input__error')]")
+
+    
