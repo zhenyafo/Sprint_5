@@ -29,6 +29,14 @@ def data_generator():
 @pytest.fixture
 def test_user_data():
     return {
+        "email": "testuser_testov_99_123@yandex.ru",
+        "password": "Password123",
+        "name": "Тестовый Пользователь"
+    }
+
+@pytest.fixture
+def test_user_data():
+    return {
         "email": "test-existing-user@yandex.ru",
         "password": "Qwerty123",
         "name": "Тестовый Пользователь"
@@ -37,9 +45,11 @@ def test_user_data():
 
 @pytest.fixture
 def random_user_data(data_generator):
+    """Случайные данные для регистрации"""
     return {
         "name": data_generator.generate_name(),
         "email": data_generator.generate_email(),
         "password": data_generator.generate_password()
     }
+
 

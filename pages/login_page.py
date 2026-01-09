@@ -19,5 +19,6 @@ class LoginPage(BasePage):
     
     def click_register_link(self):
         self.click_element(LoginPageLocators.REGISTER_LINK)
-
-        
+    
+    def click_forgot_password_link(self):
+        self.click_element(LoginPageLocators.FORGOT_PASSWORD_LINK)

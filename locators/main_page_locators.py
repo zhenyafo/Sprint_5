@@ -11,3 +11,4 @@ class MainPageLocators:
     TOPPINGS_SECTION = (By.XPATH, "//span[text()='Начинки']/parent::div")
 
     
+    

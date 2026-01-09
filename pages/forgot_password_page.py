@@ -1,9 +1,8 @@
 from pages.base_page import BasePage
-from locators.login_page_locators import LoginPageLocators
+from selenium.webdriver.common.by import By
 
 
 class ForgotPasswordPage(BasePage):
     def click_login_link(self):
-        self.click_element(LoginPageLocators.LOGIN_LINK)
-
-        
+        login_link = self.find_element((By.XPATH, "//a[@href='/login']"))
+        login_link.click()

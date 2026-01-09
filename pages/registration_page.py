@@ -1,5 +1,6 @@
 from pages.base_page import BasePage
 from locators.registration_page_locators import RegistrationPageLocators
+from selenium.webdriver.common.by import By
 
 
 class RegistrationPage(BasePage):
@@ -22,9 +23,12 @@ class RegistrationPage(BasePage):
         self.click_register_button()
     
     def click_login_link(self):
-        self.click_element(RegistrationPageLocators.LOGIN_LINK)
+        login_link = self.find_element((By.XPATH, "//a[@href='/login']"))
+        login_link.click()
     
     def is_password_error_displayed(self):
-        return self.is_element_present(RegistrationPageLocators.PASSWORD_ERROR)
-    
-    
+        try:
+            error = self.find_element((By.XPATH, "//p[contains(@class, 'input__error')]"), timeout=3)
+            return error.is_displayed()
+        except:
+            return False

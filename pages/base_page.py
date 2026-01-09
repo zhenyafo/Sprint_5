@@ -24,16 +24,3 @@ class BasePage:
         element = self.find_element(locator, timeout)
         element.clear()
         element.send_keys(text)
-    
-    def get_text(self, locator, timeout=10):
-        element = self.find_element(locator, timeout)
-        return element.text
-    
-    def is_element_present(self, locator, timeout=5):
-        try:
-            self.find_element(locator, timeout)
-            return True
-        except:
-            return False
-        
-        

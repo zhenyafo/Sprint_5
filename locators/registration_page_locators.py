@@ -10,3 +10,4 @@ class RegistrationPageLocators:
     PASSWORD_ERROR = (By.XPATH, "//p[contains(@class, 'input__error')]")
 
     
+    

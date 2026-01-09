@@ -6,4 +6,5 @@ class ProfilePageLocators:
     LOGOUT_BUTTON = (By.XPATH, "//button[text()='Выход']")
     CONSTRUCTOR_LINK = (By.XPATH, "//p[text()='Конструктор']")
 
+  
     
