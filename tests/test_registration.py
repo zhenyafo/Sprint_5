@@ -8,19 +8,19 @@ sys.path.append(str(project_root))
 import pytest
 from pages.registration_page import RegistrationPage
 from pages.main_page import MainPage
-from selenium.webdriver.common.by import By
+from pages.login_page import LoginPage
 
 
 class TestRegistration:
     def test_successful_registration(self, driver, data_generator):
         main_page = MainPage(driver)
         registration_page = RegistrationPage(driver)
+        login_page = LoginPage(driver)
         
         main_page.open()
-        
         main_page.click_login_button()
         
-        registration_page.click_register_link()
+        registration_page.click_login_link()
         
         user_data = {
             "name": data_generator.generate_name(),
@@ -34,11 +34,7 @@ class TestRegistration:
             user_data["password"]
         )
         
-        try:
-            driver.find_element(By.XPATH, "//h2[text()='Вход']")
-            assert True
-        except:
-            assert False, "Регистрация не удалась"
+        assert login_page.is_login_page()
     
     def test_registration_with_invalid_password(self, driver, data_generator):
         registration_page = RegistrationPage(driver)
@@ -51,6 +47,4 @@ class TestRegistration:
         )
         
         assert registration_page.is_password_error_displayed()
-
-
-
+        

@@ -8,4 +8,4 @@ class LoginPageLocators:
     REGISTER_LINK = (By.XPATH, "//a[text()='Зарегистрироваться']")
     FORGOT_PASSWORD_LINK = (By.XPATH, "//a[text()='Восстановить пароль']")
     PAGE_TITLE = (By.XPATH, "//h2[text()='Вход']")
-    LOGIN_LINK = (By.XPATH, "//a[text()='Войти']")
+    LOGIN_LINK = (By.XPATH, "//a[@href='/login']")

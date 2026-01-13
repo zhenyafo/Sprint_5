@@ -7,26 +7,19 @@ sys.path.append(str(project_root))
 
 import pytest
 from pages.main_page import MainPage
-from selenium.webdriver.common.by import By
+from pages.login_page import LoginPage
 
 
 class TestNavigation:
-    def test_go_to_personal_account(self, driver, test_user_data):
+    def test_go_to_personal_account(self, driver):
         main_page = MainPage(driver)
         
         main_page.open()
-        
         main_page.click_personal_account_button()
         
-        try:
-            driver.find_element(By.XPATH, "//h2[text()='Вход']")
-            assert True
-        except:
-            assert False, "Не перешли на страницу входа"
+        assert "/login" in driver.current_url
     
     def test_go_from_account_to_constructor(self, driver, test_user_data):
-        from pages.login_page import LoginPage
-        
         main_page = MainPage(driver)
         login_page = LoginPage(driver)
         
@@ -37,15 +30,9 @@ class TestNavigation:
         
         main_page.click_constructor_button()
         
-        try:
-            driver.find_element(By.XPATH, "//h1[contains(text(), 'Соберите бургер')]")
-            assert True
-        except:
-            assert False, "Не перешли в конструктор"
+        assert main_page.is_constructor_page()
     
     def test_go_from_account_by_logo(self, driver, test_user_data):
-        from pages.login_page import LoginPage
-        
         main_page = MainPage(driver)
         login_page = LoginPage(driver)
         
@@ -56,8 +43,4 @@ class TestNavigation:
         
         main_page.click_logo()
         
-        try:
-            driver.find_element(By.XPATH, "//h1[contains(text(), 'Соберите бургер')]")
-            assert True
-        except:
-            assert False, "Не перешли в конструктор по логотипу"
+        assert main_page.is_constructor_page()

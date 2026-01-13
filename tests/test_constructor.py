@@ -7,7 +7,6 @@ sys.path.append(str(project_root))
 
 import pytest
 from pages.main_page import MainPage
-from selenium.webdriver.common.by import By
 
 
 class TestConstructor:
@@ -17,7 +16,6 @@ class TestConstructor:
         main_page.open()
         
         main_page.click_sauces_section()
-        
         main_page.click_buns_section()
         
         active_tab_text = main_page.get_active_tab_text()

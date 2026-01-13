@@ -33,11 +33,7 @@ class TestLogin:
         
         login_page.login(test_user_data["email"], test_user_data["password"])
         
-        try:
-            driver.find_element(By.XPATH, "//a[text()='Профиль']")
-            assert True
-        except:
-            assert False, "Вход не выполнен"
+        assert "/account/profile" in driver.current_url or "/account" in driver.current_url
     
     def test_login_from_registration_page(self, driver, test_user_data):
         registration_page = RegistrationPage(driver)
@@ -48,26 +44,15 @@ class TestLogin:
         
         login_page.login(test_user_data["email"], test_user_data["password"])
         
-        try:
-            driver.find_element(By.XPATH, "//a[text()='Профиль']")
-            assert True
-        except:
-            assert False, "Вход не выполнен"
+        assert "/account/profile" in driver.current_url or "/account" in driver.current_url
     
     def test_login_from_forgot_password_page(self, driver, test_user_data):
         forgot_password_page = ForgotPasswordPage(driver)
         login_page = LoginPage(driver)
         
-        try:
-            forgot_password_page.open("forgot-password")
-            forgot_password_page.click_login_link()
-            
-            login_page.login(test_user_data["email"], test_user_data["password"])
-            
-            try:
-                driver.find_element(By.XPATH, "//a[text()='Профиль']")
-                assert True
-            except:
-                assert False, "Вход не выполнен"
-        except:
-            pytest.skip("Страница восстановления пароля недоступна")
+        forgot_password_page.open("forgot-password")
+        forgot_password_page.click_login_link()
+        
+        login_page.login(test_user_data["email"], test_user_data["password"])
+        
+        assert "/account/profile" in driver.current_url or "/account" in driver.current_url
