@@ -5,14 +5,17 @@ from selenium.webdriver.support import expected_conditions as EC
 class BasePage:
     def __init__(self, driver):
         self.driver = driver
-        self.base_url = "https://stellarburgers.education-services.ru/feed"
+        self.base_url = "https://stellarburgers.education-services.ru/"
     
     def open(self, url=""):
-        self.driver.get(self.base_url + url)
+        if url:
+            self.driver.get(f"{self.base_url}{url}")
+        else:
+            self.driver.get(self.base_url)
     
     def find_element(self, locator, timeout=10):
         return WebDriverWait(self.driver, timeout).until(
-            EC.presence_of_element_located(locator)
+            EC.visibility_of_element_located(locator)
         )
     
     def click_element(self, locator, timeout=10):
@@ -30,4 +33,3 @@ class BasePage:
             return True
         except:
             return False
-

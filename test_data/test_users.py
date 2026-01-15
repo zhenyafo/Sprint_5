@@ -12,6 +12,4 @@ class TestUsers:
         "name": "Администратор"
     }
 
-
-
     

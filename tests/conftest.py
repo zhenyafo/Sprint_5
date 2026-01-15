@@ -29,7 +29,7 @@ def data_generator():
 @pytest.fixture
 def test_user_data():
     return {
-        "email": "test-user-example@yandex.ru",
-        "password": "Password123",
+        "email": "test-user@yandex.ru",  
+        "password": "Password123",  
         "name": "Тестовый Пользователь"
     }

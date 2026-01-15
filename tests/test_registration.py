@@ -14,13 +14,13 @@ from pages.login_page import LoginPage
 class TestRegistration:
     def test_successful_registration(self, driver, data_generator):
         main_page = MainPage(driver)
-        registration_page = RegistrationPage(driver)
         login_page = LoginPage(driver)
+        registration_page = RegistrationPage(driver)
         
         main_page.open()
         main_page.click_login_button()
         
-        registration_page.click_login_link()
+        login_page.click_register_link()
         
         user_data = {
             "name": data_generator.generate_name(),
@@ -34,7 +34,8 @@ class TestRegistration:
             user_data["password"]
         )
         
-        assert login_page.is_login_page()
+        
+        assert "/login" in driver.current_url
     
     def test_registration_with_invalid_password(self, driver, data_generator):
         registration_page = RegistrationPage(driver)
@@ -43,8 +44,7 @@ class TestRegistration:
         registration_page.register_user(
             data_generator.generate_name(),
             data_generator.generate_email(),
-            "123"
+            "123"  
         )
         
         assert registration_page.is_password_error_displayed()
-        

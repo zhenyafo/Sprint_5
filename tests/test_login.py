@@ -9,7 +9,6 @@ import pytest
 from pages.main_page import MainPage
 from pages.login_page import LoginPage
 from pages.registration_page import RegistrationPage
-from pages.forgot_password_page import ForgotPasswordPage
 
 
 class TestLogin:
@@ -33,7 +32,7 @@ class TestLogin:
         
         login_page.login(test_user_data["email"], test_user_data["password"])
         
-        assert "/account/profile" in driver.current_url or "/account" in driver.current_url
+        assert "/account" in driver.current_url
     
     def test_login_from_registration_page(self, driver, test_user_data):
         registration_page = RegistrationPage(driver)
@@ -44,15 +43,16 @@ class TestLogin:
         
         login_page.login(test_user_data["email"], test_user_data["password"])
         
-        assert "/account/profile" in driver.current_url or "/account" in driver.current_url
+        assert "/account" in driver.current_url
     
     def test_login_from_forgot_password_page(self, driver, test_user_data):
-        forgot_password_page = ForgotPasswordPage(driver)
         login_page = LoginPage(driver)
         
-        forgot_password_page.open("forgot-password")
-        forgot_password_page.click_login_link()
+        driver.get("https://stellarburgers.education-services.ru/forgot-password")
+        
+        from selenium.webdriver.common.by import By
+        driver.find_element(By.LINK_TEXT, "Войти").click()
         
         login_page.login(test_user_data["email"], test_user_data["password"])
         
-        assert "/account/profile" in driver.current_url or "/account" in driver.current_url
+        assert "/account" in driver.current_url

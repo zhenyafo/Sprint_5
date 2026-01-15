@@ -34,3 +34,4 @@ class MainPage(BasePage):
     
     def is_constructor_page(self):
         return self.is_element_present(MainPageLocators.CONSTRUCTOR_TITLE)
+    

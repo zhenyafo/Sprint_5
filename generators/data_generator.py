@@ -12,8 +12,7 @@ class DataGenerator:
         random_numbers = ''.join(random.choices(string.digits, k=3))
         timestamp = str(int(time.time()))[-3:]
         
-        email = f"{first_name}_{last_name}_{cohort}_{random_numbers}{timestamp}@yandex.ru"
-        return email
+        return f"{first_name}_{last_name}_{cohort}_{random_numbers}{timestamp}@yandex.ru"
     
     @staticmethod
     def generate_password(length=6):
@@ -21,8 +20,7 @@ class DataGenerator:
             length = 6
         
         characters = string.ascii_letters + string.digits + "!@#$%^&*"
-        password = ''.join(random.choices(characters, k=length))
-        return password
+        return ''.join(random.choices(characters, k=length))
     
     @staticmethod
     def generate_name():
@@ -32,7 +30,3 @@ class DataGenerator:
     @staticmethod
     def generate_invalid_password():
         return ''.join(random.choices(string.ascii_letters, k=5))
-    
-    
-    
-    

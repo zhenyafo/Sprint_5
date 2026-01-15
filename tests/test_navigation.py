@@ -30,7 +30,7 @@ class TestNavigation:
         
         main_page.click_constructor_button()
         
-        assert main_page.is_constructor_page()
+        assert driver.current_url == "https://stellarburgers.education-services.ru/"
     
     def test_go_from_account_by_logo(self, driver, test_user_data):
         main_page = MainPage(driver)
@@ -43,4 +43,4 @@ class TestNavigation:
         
         main_page.click_logo()
         
-        assert main_page.is_constructor_page()
+        assert driver.current_url == "https://stellarburgers.education-services.ru/"
