@@ -9,7 +9,7 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
-from generators.data_generator import DataGenerator
+from data.test_data import TestData
 
 
 @pytest.fixture
@@ -22,14 +22,42 @@ def driver():
 
 
 @pytest.fixture
-def data_generator():
-    return DataGenerator()
+def existing_user():
+    return TestData.EXISTING_USER
 
 
 @pytest.fixture
-def test_user_data():
-    return {
-        "email": "test-user@yandex.ru",  
-        "password": "Password123",  
-        "name": "Тестовый Пользователь"
+def register_new_user(driver):
+    from helpers.generators import Generators
+    from pages.main_page import MainPage
+    from pages.login_page import LoginPage
+    from pages.registration_page import RegistrationPage
+    
+    user_data = {
+        "name": Generators.generate_name(),
+        "email": Generators.generate_email(),
+        "password": Generators.generate_password(8)
     }
+    
+    main_page = MainPage(driver)
+    login_page = LoginPage(driver)
+    registration_page = RegistrationPage(driver)
+    
+    main_page.open()
+    main_page.click_login_button()
+    login_page.click_register_link()
+    
+    registration_page.register_user(
+        user_data["name"],
+        user_data["email"],
+        user_data["password"]
+    )
+    
+    from selenium.webdriver.support.ui import WebDriverWait
+    from selenium.webdriver.support import expected_conditions as EC
+    
+    WebDriverWait(driver, 10).until(
+        EC.url_contains("/login")
+    )
+    
+    return user_data

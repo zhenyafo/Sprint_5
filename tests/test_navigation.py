@@ -12,6 +12,7 @@ from pages.login_page import LoginPage
 
 class TestNavigation:
     def test_go_to_personal_account(self, driver):
+
         main_page = MainPage(driver)
         
         main_page.open()
@@ -19,27 +20,35 @@ class TestNavigation:
         
         assert "/login" in driver.current_url
     
-    def test_go_from_account_to_constructor(self, driver, test_user_data):
+    def test_go_from_account_to_constructor(self, driver, register_new_user):
+
         main_page = MainPage(driver)
         login_page = LoginPage(driver)
         
         main_page.open()
         main_page.click_personal_account_button()
         
-        login_page.login(test_user_data["email"], test_user_data["password"])
-        
+        login_page.login(
+            register_new_user["email"], 
+            register_new_user["password"]
+        )
+
         main_page.click_constructor_button()
-        
+
         assert driver.current_url == "https://stellarburgers.education-services.ru/"
     
-    def test_go_from_account_by_logo(self, driver, test_user_data):
+    def test_go_from_account_by_logo(self, driver, register_new_user):
+
         main_page = MainPage(driver)
         login_page = LoginPage(driver)
         
         main_page.open()
         main_page.click_personal_account_button()
         
-        login_page.login(test_user_data["email"], test_user_data["password"])
+        login_page.login(
+            register_new_user["email"], 
+            register_new_user["password"]
+        )
         
         main_page.click_logo()
         

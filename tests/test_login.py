@@ -9,50 +9,65 @@ import pytest
 from pages.main_page import MainPage
 from pages.login_page import LoginPage
 from pages.registration_page import RegistrationPage
+from selenium.webdriver.common.by import By
 
 
 class TestLogin:
-    def test_login_from_main_page_button(self, driver, test_user_data):
+    def test_login_from_main_page_button(self, driver, register_new_user):
+
         main_page = MainPage(driver)
         login_page = LoginPage(driver)
         
         main_page.open()
         main_page.click_login_button()
+  
+        login_page.login(
+            register_new_user["email"], 
+            register_new_user["password"]
+        )
         
-        login_page.login(test_user_data["email"], test_user_data["password"])
-        
-        assert main_page.is_personal_account_button_visible()
+        assert driver.current_url == "https://stellarburgers.education-services.ru/"
     
-    def test_login_from_personal_account_button(self, driver, test_user_data):
+    def test_login_from_personal_account_button(self, driver, register_new_user):
         main_page = MainPage(driver)
         login_page = LoginPage(driver)
         
         main_page.open()
         main_page.click_personal_account_button()
         
-        login_page.login(test_user_data["email"], test_user_data["password"])
-        
-        assert "/account" in driver.current_url
+        login_page.login(
+            register_new_user["email"], 
+            register_new_user["password"]
+        )
+
+        assert driver.current_url == "https://stellarburgers.education-services.ru/"
     
-    def test_login_from_registration_page(self, driver, test_user_data):
+    def test_login_from_registration_page(self, driver, register_new_user):
+ 
         registration_page = RegistrationPage(driver)
         login_page = LoginPage(driver)
         
         registration_page.open("register")
         registration_page.click_login_link()
         
-        login_page.login(test_user_data["email"], test_user_data["password"])
+        login_page.login(
+            register_new_user["email"], 
+            register_new_user["password"]
+        )
         
-        assert "/account" in driver.current_url
+        assert driver.current_url == "https://stellarburgers.education-services.ru/"
     
-    def test_login_from_forgot_password_page(self, driver, test_user_data):
+    def test_login_from_forgot_password_page(self, driver, register_new_user):
+
         login_page = LoginPage(driver)
         
         driver.get("https://stellarburgers.education-services.ru/forgot-password")
         
-        from selenium.webdriver.common.by import By
         driver.find_element(By.LINK_TEXT, "Войти").click()
         
-        login_page.login(test_user_data["email"], test_user_data["password"])
+        login_page.login(
+            register_new_user["email"], 
+            register_new_user["password"]
+        )
         
-        assert "/account" in driver.current_url
+        assert driver.current_url == "https://stellarburgers.education-services.ru/"
