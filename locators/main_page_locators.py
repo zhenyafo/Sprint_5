@@ -10,4 +10,4 @@ class MainPageLocators:
     SAUCES_SECTION = (By.XPATH, "//span[text()='Соусы']/parent::div")
     TOPPINGS_SECTION = (By.XPATH, "//span[text()='Начинки']/parent::div")
     ACTIVE_TAB = (By.CLASS_NAME, "tab_tab_type_current__2BEPc")
-    
+     

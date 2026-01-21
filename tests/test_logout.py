@@ -41,4 +41,4 @@ class TestLogout:
         
         assert "/login" in driver.current_url
         
-        assert driver.find_element(By.XPATH, "//h2[text()='Вход']").is_displayed()
+        assert driver.find_element(By.XPATH, "//h2[text()='Вход']").is_displayed() 

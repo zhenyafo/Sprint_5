@@ -52,4 +52,4 @@ class TestNavigation:
         
         main_page.click_logo()
         
-        assert driver.current_url == "https://stellarburgers.education-services.ru/"
+        assert driver.current_url == "https://stellarburgers.education-services.ru/" 

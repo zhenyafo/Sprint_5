@@ -50,4 +50,4 @@ class TestRegistration:
             "123"
         )
         
-        assert registration_page.is_password_error_displayed()
+        assert registration_page.is_password_error_displayed() 

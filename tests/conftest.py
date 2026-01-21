@@ -3,14 +3,12 @@ import os
 from pathlib import Path
 
 project_root = Path(__file__).parent.parent
-sys.path.append(str(project_root))
+sys.path.insert(0, str(project_root))
 
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
-from data.test_data import TestData
-
 
 @pytest.fixture
 def driver():
@@ -23,11 +21,13 @@ def driver():
 
 @pytest.fixture
 def existing_user():
-    return TestData.EXISTING_USER
+    from data.test_data import test_data 
+    return test_data.EXISTING_USER
 
 
 @pytest.fixture
 def register_new_user(driver):
+
     from helpers.generators import Generators
     from pages.main_page import MainPage
     from pages.login_page import LoginPage

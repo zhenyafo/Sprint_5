@@ -70,4 +70,4 @@ class TestLogin:
             register_new_user["password"]
         )
         
-        assert driver.current_url == "https://stellarburgers.education-services.ru/"
+        assert driver.current_url == "https://stellarburgers.education-services.ru/" 
