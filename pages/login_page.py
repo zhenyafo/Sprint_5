@@ -23,4 +23,3 @@ class LoginPage(BasePage):
     def click_forgot_password_link(self):
         self.click_element(LoginPageLocators.FORGOT_PASSWORD_LINK)
         
- 

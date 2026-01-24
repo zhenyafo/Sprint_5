@@ -10,4 +10,4 @@ __all__ = [
     'LoginPage',
     'RegistrationPage',
     'ForgotPasswordPage'
-] 
+]  

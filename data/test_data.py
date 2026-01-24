@@ -1,13 +1,12 @@
 class test_data:
     EXISTING_USER = {
-        "email": "test-existing@yandex.ru",
-        "password": "Password123",
-        "name": "Существующий Пользователь"
+        "email": "zhenya_fotina_3611@gmail.com",
+        "password": "Qwerty123", 
+        "name": "Тестовый Пользователь"
     }
     
     REGISTRATION_DATA = {
         "name": "Новый Пользователь",
-        "email": "new-user@yandex.ru",
+        "email": "new-user-test@yandex.ru",
         "password": "NewPass123"
     }
-    

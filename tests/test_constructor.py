@@ -40,4 +40,4 @@ class TestConstructor:
         
         active_tab_text = main_page.get_active_tab_text()
         assert "Начинки" in active_tab_text
-         
+          

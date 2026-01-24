@@ -10,4 +10,4 @@ chromedriver.log
 htmlcov/
 .vscode/
 .idea/
-.DS_Store 
+.DS_Store

@@ -8,4 +8,4 @@ class LoginPageLocators:
     REGISTER_LINK = (By.LINK_TEXT, "Зарегистрироваться")
     FORGOT_PASSWORD_LINK = (By.LINK_TEXT, "Восстановить пароль")
     LOGIN_LINK = (By.LINK_TEXT, "Войти")
-     
+      

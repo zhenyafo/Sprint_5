@@ -3,7 +3,7 @@ import os
 from pathlib import Path
 
 project_root = Path(__file__).parent.parent
-sys.path.append(str(project_root))
+sys.path.insert(0, str(project_root))
 
 import pytest
 from pages.main_page import MainPage
@@ -20,8 +20,7 @@ class TestNavigation:
         
         assert "/login" in driver.current_url
     
-    def test_go_from_account_to_constructor(self, driver, register_new_user):
-
+    def test_go_from_account_to_constructor(self, driver, registered_user):
         main_page = MainPage(driver)
         login_page = LoginPage(driver)
         
@@ -29,16 +28,15 @@ class TestNavigation:
         main_page.click_personal_account_button()
         
         login_page.login(
-            register_new_user["email"], 
-            register_new_user["password"]
+            registered_user["email"], 
+            registered_user["password"]
         )
-
+        
         main_page.click_constructor_button()
-
+        
         assert driver.current_url == "https://stellarburgers.education-services.ru/"
     
-    def test_go_from_account_by_logo(self, driver, register_new_user):
-
+    def test_go_from_account_by_logo(self, driver, registered_user):
         main_page = MainPage(driver)
         login_page = LoginPage(driver)
         
@@ -46,10 +44,10 @@ class TestNavigation:
         main_page.click_personal_account_button()
         
         login_page.login(
-            register_new_user["email"], 
-            register_new_user["password"]
+            registered_user["email"], 
+            registered_user["password"]
         )
         
         main_page.click_logo()
         
-        assert driver.current_url == "https://stellarburgers.education-services.ru/" 
+        assert driver.current_url == "https://stellarburgers.education-services.ru/"

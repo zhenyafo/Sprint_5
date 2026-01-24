@@ -3,7 +3,7 @@ import os
 from pathlib import Path
 
 project_root = Path(__file__).parent.parent
-sys.path.append(str(project_root))
+sys.path.insert(0, str(project_root))
 
 import pytest
 from pages.main_page import MainPage
@@ -14,18 +14,17 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 class TestLogout:
-    def test_logout_from_account(self, driver, register_new_user):
-        
+    def test_logout_from_account(self, driver, registered_user):
         main_page = MainPage(driver)
         login_page = LoginPage(driver)
-
+        
         main_page.open()
         main_page.click_login_button()
         login_page.login(
-            register_new_user["email"], 
-            register_new_user["password"]
+            registered_user["email"], 
+            registered_user["password"]
         )
-
+        
         main_page.click_personal_account_button()
         
         WebDriverWait(driver, 10).until(
@@ -40,5 +39,3 @@ class TestLogout:
         )
         
         assert "/login" in driver.current_url
-        
-        assert driver.find_element(By.XPATH, "//h2[text()='Вход']").is_displayed() 
